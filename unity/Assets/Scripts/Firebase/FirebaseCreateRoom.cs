@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public class FirebaseCreateRoom : MonoBehaviour
 {
-    public async void CreateRoom()
+    public async Task CreateRoom()
     {
         string userId = PlayerPrefs.GetString("PlayerID", "");
         if (string.IsNullOrEmpty(userId))
@@ -24,5 +24,11 @@ public class FirebaseCreateRoom : MonoBehaviour
         PlayerPrefs.Save();
         
         Debug.Log($"Room created - RoomID: {roomId}, UserID: {userId}");
+    }
+
+    public async void Start()
+    {
+      Debug.Log("FirebaseCreateRoom Start() called on: " + gameObject.name);
+      await CreateRoom();
     }
 }
