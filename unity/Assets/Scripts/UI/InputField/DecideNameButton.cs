@@ -12,10 +12,26 @@ public class DecideNameButton : MonoBehaviour
         string playerName = nameText.text;
         if (string.IsNullOrEmpty(playerName)) return;
 
-        Debug.Log($"DecideNameButton clicked with name: {playerName}");
+        string playerId = GetOrCreatePlayerId();
+        Debug.Log($"Player ID: {playerId}, Name: {playerName}");
 
         var reference = FirebaseDatabase.DefaultInstance.RootReference;
-        await reference.Child("users").Child("player").Child("name").SetValueAsync(playerName);
-        Debug.Log($"Player name saved: {playerName}");
+        await reference.Child("users").Child(playerId).Child("name").SetValueAsync(playerName);
+        Debug.Log($"Player data saved - ID: {playerId}, Name: {playerName}");
+    }
+
+    private string GetOrCreatePlayerId()
+    {
+        const string PLAYER_ID_KEY = "PlayerID";
+        
+        if (PlayerPrefs.HasKey(PLAYER_ID_KEY))
+        {
+            return PlayerPrefs.GetString(PLAYER_ID_KEY);
+        }
+
+        string newId = System.Guid.NewGuid().ToString();
+        PlayerPrefs.SetString(PLAYER_ID_KEY, newId);
+        PlayerPrefs.Save();
+        return newId;
     }
 }
