@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Firebase.Database;
 using Onigokko.Location;
 
 namespace Onigokko.Map
@@ -28,6 +29,12 @@ namespace Onigokko.Map
         // マップデータ
         private GPSLocationService.Vector2d gameAreaCenter;
         private List<MapMarker> mapMarkers = new List<MapMarker>();
+        
+        // Firebase関連
+        private DatabaseReference databaseRef;
+        private string roomId;
+        private string userId;
+        private float lastFirebaseUpdateTime;
 
         [System.Serializable]
         public class TestPlayer
@@ -76,6 +83,9 @@ namespace Onigokko.Map
 
             // マップマーカーを初期化
             InitializeMapMarkers();
+            
+            // Firebase初期化
+            InitializeFirebase();
 
             Debug.Log("[Map] Map検証システム開始");
         }
@@ -114,6 +124,24 @@ namespace Onigokko.Map
         }
 
         /// <summary>
+        /// Firebase初期化
+        /// </summary>
+        private void InitializeFirebase()
+        {
+            roomId = PlayerPrefs.GetString("RoomID", "");
+            userId = PlayerPrefs.GetString("PlayerID", "");
+            
+            if (string.IsNullOrEmpty(roomId) || string.IsNullOrEmpty(userId))
+            {
+                Debug.LogError("[Map] RoomID or PlayerID not found in PlayerPrefs");
+                return;
+            }
+            
+            databaseRef = FirebaseDatabase.DefaultInstance.RootReference;
+            Debug.Log($"[Map] Firebase初期化完了 - RoomID: {roomId}, UserID: {userId}");
+        }
+
+        /// <summary>
         /// 位置情報更新時のコールバック
         /// </summary>
         private void OnLocationUpdated(LocationInfo locationInfo)
@@ -129,10 +157,41 @@ namespace Onigokko.Map
 
             // マーカー更新
             UpdateMapMarkers();
+            
+            if (Time.time - lastFirebaseUpdateTime >= 3f)
+            {
+                SendLocationToFirebase(currentPos);
+                lastFirebaseUpdateTime = Time.time;
+            }
 
             if (showDebugUI)
             {
                 Debug.Log($"[Map] 位置更新 - エリア内: {isInGameArea}, 中心距離: {distanceFromCenter:F1}m");
+            }
+        }
+
+        /// <summary>
+        /// Firebase に位置情報を送信
+        /// </summary>
+        private async void SendLocationToFirebase(GPSLocationService.Vector2d position)
+        {
+            if (databaseRef == null || string.IsNullOrEmpty(roomId) || string.IsNullOrEmpty(userId))
+            {
+                return;
+            }
+            
+            try
+            {
+                var userLocationRef = databaseRef.Child("rooms").Child(roomId).Child("users").Child(userId);
+                
+                await userLocationRef.Child("lat").SetValueAsync(position.latitude);
+                await userLocationRef.Child("lng").SetValueAsync(position.longitude);
+                
+                Debug.Log($"[Map] 位置情報送信完了 - Lat: {position.latitude:F6}, Lng: {position.longitude:F6}");
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"[Map] Firebase位置情報送信エラー: {e.Message}");
             }
         }
 

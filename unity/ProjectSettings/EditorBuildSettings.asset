@@ -35,7 +35,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/BLEBeaconTest.unity
     guid: 00000000000000000000000000000000
+<<<<<<< Updated upstream
+  - enabled: 0
+=======
   - enabled: 1
+>>>>>>> Stashed changes
     path: Assets/Scenes/Verification/MapVerification.unity
     guid: ab27d6ce2f35240eb80e086532c812e9
   m_configObjects:
