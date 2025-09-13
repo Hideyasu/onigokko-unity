@@ -1,0 +1,32 @@
+{
+  "project_info": {
+    "project_number": "974453648685",
+    "firebase_url": "https://onigokko-unity-default-rtdb.firebaseio.com/",
+    "project_id": "onigokko-unity",
+    "storage_bucket": "onigokko-unity.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974453648685:ios:4fcbc8d6cfe487274bf7a4",
+        "android_client_info": {
+          "package_name": "com.yourcompany.onigokko.test"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwIfbc59P_7DWeGIgP9ZIRccPysUWcHqk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
