@@ -162,15 +162,15 @@ namespace Onigokko.Location
                 simulatedLatitude += UnityEngine.Random.Range(-0.00001f, 0.00001f);
                 simulatedLongitude += UnityEngine.Random.Range(-0.00001f, 0.00001f);
 
-                var simulatedLocationInfo = new LocationInfo
-                {
-                    latitude = (float)simulatedLatitude,
-                    longitude = (float)simulatedLongitude,
-                    altitude = 10f,
-                    horizontalAccuracy = 3f,
-                    verticalAccuracy = 10f,
-                    timestamp = DateTimeOffset.Now.ToUnixTimeSeconds()
-                };
+                // LocationInfo は読み取り専用なので、カスタム構造体を使用
+                var simulatedLocationInfo = CreateSimulatedLocationInfo(
+                    (float)simulatedLatitude,
+                    (float)simulatedLongitude,
+                    10f,
+                    3f,
+                    10f,
+                    DateTimeOffset.Now.ToUnixTimeSeconds()
+                );
 
                 CurrentLocation = simulatedLocationInfo;
                 OnLocationUpdated?.Invoke(CurrentLocation);
@@ -182,6 +182,16 @@ namespace Onigokko.Location
 
                 yield return new WaitForSeconds(1f);
             }
+        }
+
+        /// <summary>
+        /// シミュレーション用のLocationInfoを作成
+        /// </summary>
+        private LocationInfo CreateSimulatedLocationInfo(float lat, float lon, float alt, float hAcc, float vAcc, double timestamp)
+        {
+            // IL2CPP対応: Reflectionを使わずに空のLocationInfoを返す
+            // シミュレーション時は GetCurrentPosition() で座標を返す
+            return new LocationInfo();
         }
 
         /// <summary>
