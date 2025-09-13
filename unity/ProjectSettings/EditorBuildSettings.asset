@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Scenes/Verification/BLEBeaconTest.unity
+    guid: 79500acd1758c4cddbcc71aa8745ec6a
   - enabled: 1
     path: Assets/Scenes/BeforeGame/Start.unity
     guid: d5b8db391cf2f4840ba440c1085690dc
@@ -30,8 +33,10 @@ EditorBuildSettings:
     path: Assets/Scenes/BeforeGame/Waiting.unity
     guid: f218d94608ca94cd3952b0dee373ce46
   - enabled: 1
-    path: Assets/Scenes/BLEBeaconTest.unity
-    guid: 79500acd1758c4cddbcc71aa8745ec6a
+    path: Assets/Scenes/BLEBeaconTest.unity    
+  - enabled: 1
+    path: Assets/Scenes/Verification/MapVerification.unity
+    guid: ab27d6ce2f35240eb80e086532c812e9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
