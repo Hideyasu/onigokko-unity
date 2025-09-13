@@ -32,9 +32,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BeforeGame/Waiting.unity
     guid: f218d94608ca94cd3952b0dee373ce46
+  - enabled: 0
+    path: Assets/Scenes/BLEBeaconTest.unity
+    guid: 00000000000000000000000000000000
+<<<<<<< Updated upstream
+  - enabled: 0
+=======
   - enabled: 1
-    path: Assets/Scenes/BLEBeaconTest.unity    
-  - enabled: 1
+>>>>>>> Stashed changes
     path: Assets/Scenes/Verification/MapVerification.unity
     guid: ab27d6ce2f35240eb80e086532c812e9
   m_configObjects:
