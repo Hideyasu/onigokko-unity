@@ -278,7 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameUUID: 550e8400-e29b-41d4-a716-446655440000
   sessionId: 1
-  playerId: 1001
+  playerId: 2001
   autoStartAdvertising: 1
   autoStartScanning: 1
   showDebugUI: 1
