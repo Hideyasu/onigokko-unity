@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "974453648685",
+    "firebase_url": "https://onigokko-unity-default-rtdb.firebaseio.com/",
     "project_id": "onigokko-unity",
     "storage_bucket": "onigokko-unity.firebasestorage.app"
   },
