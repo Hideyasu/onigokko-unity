@@ -43,7 +43,7 @@ public class InputName : MonoBehaviour
     {
         if (inputText != null)
         {
-            inputText.text = playerName;
+            inputText.text = playerName; // 入力された名前をTextに反映
         }
     }
 
