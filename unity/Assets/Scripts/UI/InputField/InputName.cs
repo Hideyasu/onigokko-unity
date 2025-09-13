@@ -22,6 +22,10 @@ public class InputName : MonoBehaviour
         {
             inputField.textComponent = inputText;
         }
+        if (placeholderText != null)
+        {
+            inputField.placeholder = placeholderText;
+        }
     }
 
     void Start()
@@ -32,11 +36,14 @@ public class InputName : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// placeholderTextに入力された名前をinputTextに表示する
+    /// </summary>
     void Update()
     {
         if (inputText != null)
         {
-            inputText.text = playerName; // 入力された名前をTextに反映
+            inputText.text = playerName;
         }
     }
 
