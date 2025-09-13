@@ -1,0 +1,317 @@
+{
+  "title": "鬼vs陰陽師ゲーム Firebase API契約",
+  "version": "0.1.0",
+  "description": "リアルタイム鬼ごっこゲームのFirebase Realtime Database API定義",
+  "baseUrl": "https://onigokko-unity-default-rtdb.firebaseio.com",
+
+  "endpoints": {
+    "sessions": {
+      "create": {
+        "method": "POST",
+        "path": "/sessions.json",
+        "description": "新しいゲームセッションを作成",
+        "request": {
+          "body": {
+            "host_id": "string",
+            "duration_minutes": "number",
+            "max_players": "number",
+            "game_area": {
+              "center_lat": "number",
+              "center_lon": "number",
+              "radius_meters": "number"
+            }
+          }
+        },
+        "response": {
+          "success": {
+            "session_id": "string",
+            "state": "waiting",
+            "created_at": "number"
+          },
+          "error": {
+            "code": "string",
+            "message": "string"
+          }
+        }
+      },
+
+      "join": {
+        "method": "PUT",
+        "path": "/sessions/{session_id}/players/{player_id}.json",
+        "description": "プレイヤーがセッションに参加",
+        "request": {
+          "params": {
+            "session_id": "string",
+            "player_id": "string"
+          },
+          "body": {
+            "name": "string",
+            "joined_at": "number"
+          }
+        },
+        "response": {
+          "success": {
+            "role": "string",
+            "joined_at": "number"
+          }
+        }
+      },
+
+      "start": {
+        "method": "PUT",
+        "path": "/sessions/{session_id}/state.json",
+        "description": "ゲームを開始",
+        "request": {
+          "params": {
+            "session_id": "string"
+          },
+          "body": "\"playing\""
+        },
+        "response": {
+          "success": {
+            "state": "playing",
+            "started_at": "number",
+            "roles_assigned": {
+              "oni": "string",
+              "onmyoji": ["string"]
+            }
+          }
+        }
+      },
+
+      "get_state": {
+        "method": "GET",
+        "path": "/sessions/{session_id}.json",
+        "description": "ゲーム状態を取得",
+        "request": {
+          "params": {
+            "session_id": "string"
+          }
+        },
+        "response": {
+          "success": {
+            "id": "string",
+            "state": "string",
+            "players": "object",
+            "ritual_progress": "object",
+            "winner": "string|null"
+          }
+        }
+      }
+    },
+
+    "players": {
+      "update_location": {
+        "method": "PUT",
+        "path": "/players/{player_id}/location.json",
+        "description": "プレイヤーの位置情報を更新",
+        "request": {
+          "params": {
+            "player_id": "string"
+          },
+          "body": {
+            "latitude": "number",
+            "longitude": "number",
+            "accuracy": "number",
+            "timestamp": "number"
+          }
+        },
+        "response": {
+          "success": {
+            "updated_at": "number"
+          }
+        }
+      },
+
+      "attack": {
+        "method": "POST",
+        "path": "/players/{player_id}/actions.json",
+        "description": "鬼が陰陽師を攻撃",
+        "request": {
+          "params": {
+            "player_id": "string"
+          },
+          "body": {
+            "action": "attack",
+            "target_id": "string",
+            "location": {
+              "latitude": "number",
+              "longitude": "number"
+            },
+            "timestamp": "number"
+          }
+        },
+        "response": {
+          "success": {
+            "result": "hit|miss",
+            "damage": "number",
+            "target_health": "number"
+          }
+        }
+      }
+    },
+
+    "traps": {
+      "place": {
+        "method": "POST",
+        "path": "/traps.json",
+        "description": "陰陽師がトラップを設置",
+        "request": {
+          "body": {
+            "owner_id": "string",
+            "session_id": "string",
+            "location": {
+              "latitude": "number",
+              "longitude": "number"
+            },
+            "duration_seconds": "number"
+          }
+        },
+        "response": {
+          "success": {
+            "trap_id": "string",
+            "expires_at": "number"
+          }
+        }
+      },
+
+      "trigger": {
+        "method": "PUT",
+        "path": "/traps/{trap_id}.json",
+        "description": "トラップが発動",
+        "request": {
+          "params": {
+            "trap_id": "string"
+          },
+          "body": {
+            "is_triggered": true,
+            "triggered_by": "string",
+            "triggered_at": "number"
+          }
+        },
+        "response": {
+          "success": {
+            "effect_duration": "number",
+            "affected_player": "string"
+          }
+        }
+      }
+    },
+
+    "rituals": {
+      "start": {
+        "method": "PUT",
+        "path": "/rituals/{ritual_id}/progress.json",
+        "description": "儀式を開始",
+        "request": {
+          "params": {
+            "ritual_id": "string"
+          },
+          "body": {
+            "current_players": ["string"],
+            "started_at": "number"
+          }
+        },
+        "response": {
+          "success": {
+            "progress_percentage": "number",
+            "estimated_completion": "number"
+          }
+        }
+      },
+
+      "complete": {
+        "method": "PUT",
+        "path": "/rituals/{ritual_id}.json",
+        "description": "儀式を完了",
+        "request": {
+          "params": {
+            "ritual_id": "string"
+          },
+          "body": {
+            "is_completed": true,
+            "completed_by": ["string"],
+            "completed_at": "number"
+          }
+        },
+        "response": {
+          "success": {
+            "ritual_completed": true,
+            "total_progress": {
+              "completed": "number",
+              "total": "number"
+            }
+          }
+        }
+      }
+    },
+
+    "footprints": {
+      "create": {
+        "method": "POST",
+        "path": "/footprints.json",
+        "description": "陰陽師の足跡を作成",
+        "request": {
+          "body": {
+            "player_id": "string",
+            "session_id": "string",
+            "path": [
+              {
+                "latitude": "number",
+                "longitude": "number",
+                "timestamp": "number"
+              }
+            ],
+            "duration_seconds": "number"
+          }
+        },
+        "response": {
+          "success": {
+            "footprint_id": "string",
+            "expires_at": "number"
+          }
+        }
+      }
+    }
+  },
+
+  "realtime_listeners": {
+    "session_state": {
+      "path": "/sessions/{session_id}",
+      "description": "ゲームセッション状態の変更を監視",
+      "events": ["value", "child_changed"]
+    },
+
+    "player_locations": {
+      "path": "/players",
+      "description": "全プレイヤーの位置情報変更を監視",
+      "events": ["child_changed"],
+      "filter": "session_id"
+    },
+
+    "traps_active": {
+      "path": "/traps",
+      "description": "アクティブなトラップの状態変更を監視",
+      "events": ["child_added", "child_changed", "child_removed"],
+      "filter": "session_id"
+    },
+
+    "ritual_progress": {
+      "path": "/rituals",
+      "description": "儀式進行状況の変更を監視",
+      "events": ["child_changed"],
+      "filter": "session_id"
+    }
+  },
+
+  "error_codes": {
+    "SESSION_NOT_FOUND": "指定されたセッションが見つかりません",
+    "SESSION_FULL": "セッションが満員です",
+    "INVALID_ROLE": "無効な役割が指定されました",
+    "OUT_OF_RANGE": "攻撃/行動範囲外です",
+    "PERMISSION_DENIED": "この操作を実行する権限がありません",
+    "RATE_LIMIT_EXCEEDED": "リクエスト頻度が上限を超えています",
+    "INVALID_LOCATION": "無効な位置情報です",
+    "GAME_NOT_ACTIVE": "ゲームがアクティブ状態ではありません"
+  }
+}
