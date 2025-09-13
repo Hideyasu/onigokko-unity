@@ -15,7 +15,6 @@ public class FirebaseLogin : MonoBehaviour
         {
             reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-            // データ書き込み例
             reference.Child("users").Child("test_user").Child("score").SetValueAsync(100);
             Debug.Log("Write Success");
         }
