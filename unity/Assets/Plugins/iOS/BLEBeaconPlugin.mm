@@ -5,9 +5,11 @@
 
 #import "BLEBeaconPlugin.h"
 
-// Unity C# コールバック用
-typedef void (*BeaconDetectedCallback)(const char* uuid, int major, int minor, float distance, float rssi);
-extern BeaconDetectedCallback g_BeaconDetectedCallback;
+// Unity C# コールバック用（C言語リンケージ）
+extern "C" {
+    typedef void (*BeaconDetectedCallback)(const char* uuid, int major, int minor, float distance, float rssi);
+    extern BeaconDetectedCallback g_BeaconDetectedCallback;
+}
 
 @implementation BLEBeaconPlugin
 
@@ -84,7 +86,7 @@ extern BeaconDetectedCallback g_BeaconDetectedCallback;
     // iOS 13+ の新しいAPI使用
     if (@available(iOS 13.0, *)) {
         CLBeaconIdentityConstraint *constraint = [[CLBeaconIdentityConstraint alloc] initWithUUID:beaconUUID];
-        [self.locationManager startRangingBeaconsWithConstraint:constraint];
+        [self.locationManager startRangingBeaconsSatisfyingConstraint:constraint];
     } else {
         [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
     }
@@ -95,7 +97,7 @@ extern BeaconDetectedCallback g_BeaconDetectedCallback;
 - (void)stopScanning {
     if (@available(iOS 13.0, *)) {
         CLBeaconIdentityConstraint *constraint = [[CLBeaconIdentityConstraint alloc] initWithUUID:self.beaconRegion.UUID];
-        [self.locationManager stopRangingBeaconsWithConstraint:constraint];
+        [self.locationManager stopRangingBeaconsSatisfyingConstraint:constraint];
     } else {
         [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
     }
@@ -116,7 +118,7 @@ extern BeaconDetectedCallback g_BeaconDetectedCallback;
 
 // iOS 13+
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray<CLBeacon *> *)beacons
-       satisfyingConstraint:(CLBeaconIdentityConstraint *)beaconConstraint API_AVAILABLE(ios(13.0)) {
+        satisfyingConstraint:(CLBeaconIdentityConstraint *)beaconConstraint API_AVAILABLE(ios(13.0)) {
     [self processRangedBeacons:beacons];
 }
 
