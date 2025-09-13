@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- 位置情報権限 -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>ゲーム中の位置追跡とプレイヤー間の距離測定に使用します</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>リアル鬼ごっこゲームでプレイヤーとの距離を正確に測定するために必要です</string>
+
+	<!-- Bluetooth権限 -->
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>BLE Beacon機能を使用してプレイヤー間の近接検出を行います</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>他のプレイヤーにビーコン信号を送信するために必要です</string>
+
+	<!-- バックグラウンド実行権限 -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+		<string>location</string>
+	</array>
+
+	<!-- BLE Beacon検証に必要な設定 -->
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>location-services</string>
+		<string>bluetooth-le</string>
+	</array>
+
+	<!-- iBeacon専用設定 -->
+	<key>NSLocationUsageDescription</key>
+	<string>iBeacon機能による近接検出のために位置情報を使用します</string>
+</dict>
+</plist>
