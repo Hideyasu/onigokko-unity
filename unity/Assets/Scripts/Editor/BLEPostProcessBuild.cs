@@ -28,8 +28,10 @@ namespace Onigokko.BLE.Editor
 
 #if UNITY_2019_3_OR_NEWER
                 string targetGuid = proj.GetUnityFrameworkTargetGuid();
+                string mainTargetGuid = proj.GetUnityMainTargetGuid();
 #else
                 string targetGuid = proj.TargetGuidByName("Unity-iPhone");
+                string mainTargetGuid = targetGuid;
 #endif
 
                 // BLE Beacon に必要なフレームワークを追加
@@ -64,6 +66,12 @@ namespace Onigokko.BLE.Editor
             // UIKit (バックグラウンド処理)
             proj.AddFrameworkToProject(targetGuid, "UIKit.framework", false);
 
+            // System Configuration
+            proj.AddFrameworkToProject(targetGuid, "SystemConfiguration.framework", false);
+
+            // Security
+            proj.AddFrameworkToProject(targetGuid, "Security.framework", false);
+
             Debug.Log("[BLE] フレームワーク追加完了");
         }
 
@@ -90,7 +98,9 @@ namespace Onigokko.BLE.Editor
 
             PlistElementDict rootDict = plist.root;
 
-            // 位置情報権限の説明
+            // 位置情報権限の説明（複数の形式で設定）
+            rootDict.SetString("NSLocationUsageDescription",
+                "ゲーム中の位置追跡とプレイヤー間の距離測定に使用します");
             rootDict.SetString("NSLocationWhenInUseUsageDescription",
                 "ゲーム中の位置追跡とプレイヤー間の距離測定に使用します");
             rootDict.SetString("NSLocationAlwaysAndWhenInUseUsageDescription",

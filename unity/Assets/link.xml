@@ -1,0 +1,14 @@
+<linker>
+  <!-- Core Location と Core Bluetooth の型を保護 -->
+  <assembly fullname="UnityEngine.CoreModule">
+    <type fullname="UnityEngine.LocationInfo" preserve="all"/>
+    <type fullname="UnityEngine.LocationService" preserve="all"/>
+  </assembly>
+
+  <!-- カスタムスクリプトを保護 -->
+  <assembly fullname="Assembly-CSharp">
+    <namespace fullname="Onigokko.BLE" preserve="all"/>
+    <namespace fullname="Onigokko.Location" preserve="all"/>
+    <namespace fullname="Onigokko.Map" preserve="all"/>
+  </assembly>
+</linker>
