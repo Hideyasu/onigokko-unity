@@ -7,6 +7,7 @@ public class DecideNameButton : MonoBehaviour
 
     public void OnClick()
     {
+        SoundManager.Instance.PlaySE();
         string playerName = nameText.text;
         Debug.Log("Player Name: " + playerName);
     }

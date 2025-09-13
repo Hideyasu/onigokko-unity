@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioSource seSource;
+    [SerializeField] private AudioClip defaultSE;
 
     private void Awake()
     {
@@ -35,8 +36,9 @@ public class SoundManager : MonoBehaviour
         bgmSource.clip = null;
     }
 
-    public void PlaySE(AudioClip clip)
+    public void PlaySE()
     {
-        seSource.PlayOneShot(clip);
+        if (defaultSE != null)
+            seSource.PlayOneShot(defaultSE);
     }
 }
