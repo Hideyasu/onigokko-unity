@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 6272115399651533884}
   - component: {fileID: 16167193862937607}
   - component: {fileID: 2922521250618469886}
+  - component: {fileID: 8232083360186162960}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -353,7 +354,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 16167193862937607}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8232083360186162960}
+        m_TargetAssemblyTypeName: UICreate.ChangeSceneButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8232083360186162960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496158159159555055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa8f70c05f2042d08153796c659da67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneChangeScriptableObject: {fileID: 11400000, guid: 3e53ee72eb3df4feab6439a4b2f0f802, type: 2}
+  _sceneIndex: -1
 --- !u!1 &5125768680738333903
 GameObject:
   m_ObjectHideFlags: 0
