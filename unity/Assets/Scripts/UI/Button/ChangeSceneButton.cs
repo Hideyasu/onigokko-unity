@@ -36,7 +36,8 @@ namespace UICreate
                 return;
             }
             CurrentSceneIndex = index;
-            LoadSpecificScene(_sceneChangeScriptableObject.SceneLists[index].name);
+            string sceneName = _sceneChangeScriptableObject.GetSceneName(index);
+            LoadSpecificScene(sceneName);
         }
 
         private void LoadNextScene()
@@ -47,7 +48,8 @@ namespace UICreate
                 Debug.LogError("次のシーンが存在しません");
                 return;
             }
-            SceneManager.LoadScene(_sceneChangeScriptableObject.SceneLists[CurrentSceneIndex].name);
+            string sceneName = _sceneChangeScriptableObject.GetSceneName(CurrentSceneIndex);
+            SceneManager.LoadScene(sceneName);
         }
 
         private void LoadSpecificScene(string sceneName)
