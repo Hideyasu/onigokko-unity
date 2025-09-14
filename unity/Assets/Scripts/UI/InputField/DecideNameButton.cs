@@ -9,6 +9,7 @@ public class DecideNameButton : MonoBehaviour
 
     public async void OnClick()
     {
+        var status = await FirebaseApp.CheckAndFixDependenciesAsync();
         SoundManager.Instance.PlaySE();
         string playerName = nameText.text;
         if (string.IsNullOrEmpty(playerName)) return;

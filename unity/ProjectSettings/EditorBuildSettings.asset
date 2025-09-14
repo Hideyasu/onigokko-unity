@@ -35,6 +35,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainGame/MainScene.unity
     guid: 480d400516e5f432a99385304e50b1fe
+  - enabled: 1
+    path: Assets/Scenes/Main/PresenterScene.unity
+    guid: 410b11a5b7988430fb3fe3f48d4815f0
+  - enabled: 1
+    path: Assets/Scenes/Result/Loser.unity
+    guid: ffa0e5a8a403b4ccba7828a8715df183
+  - enabled: 1
+    path: Assets/Scenes/Result/Noroware.unity
+    guid: edc36f9b2d4f94ca28efeaddfc9603bb
+  - enabled: 1
+    path: Assets/Scenes/Result/Winner.unity
+    guid: 977520fd8fa814bb0b1554fded576a98
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
