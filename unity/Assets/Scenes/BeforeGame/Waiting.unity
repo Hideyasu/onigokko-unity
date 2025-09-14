@@ -332,6 +332,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7921788575715748230, guid: 3fb3917f4681f4d54a0ce25596c8db64, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1121dd7d7249b4977baf5416dcdd4a2a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -571,11 +575,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3933277248572992633, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
       propertyPath: _sceneIndex
-      value: -1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 392823556944947767, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
       propertyPath: m_Name
       value: SceneChangeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3223815715773473952, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3600612189116404694, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
       propertyPath: m_Pivot.x
@@ -656,6 +664,10 @@ PrefabInstance:
     - target: {fileID: 3600612189116404694, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824568243688894458, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -784,6 +796,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3421423050051900481, guid: c50a3e28d3d674050997eeecfb30e48c, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618995015727134812, guid: c50a3e28d3d674050997eeecfb30e48c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4321209375316070965, guid: c50a3e28d3d674050997eeecfb30e48c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -874,6 +894,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4321209375316070965, guid: c50a3e28d3d674050997eeecfb30e48c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649157710672506437, guid: c50a3e28d3d674050997eeecfb30e48c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8223289124051507731, guid: c50a3e28d3d674050997eeecfb30e48c, type: 3}

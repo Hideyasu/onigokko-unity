@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d435d698e0c4705bbe113f9c99027c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildPlayerId: 1002
+  buildPlayerId: 1001
   overridePlayerPrefs: 1
   showDebugInfo: 1
   allowRuntimeChange: 0
