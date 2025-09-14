@@ -46,6 +46,20 @@ namespace Onigokko.BLE
 
         void Start()
         {
+            // PlayerIdManagerからPlayer IDを取得
+            var playerIdManager = Onigokko.Heartbeat.PlayerIdManager.Instance;
+            if (playerIdManager != null)
+            {
+                playerId = playerIdManager.GetPlayerId();
+                Debug.Log($"[BLE] PlayerIdManagerからID取得: {playerId}");
+            }
+            else
+            {
+                // フォールバック: PlayerPrefsから取得
+                playerId = PlayerPrefs.GetInt("PlayerID", 1001);
+                Debug.Log($"[BLE] PlayerPrefsからID取得: {playerId}");
+            }
+
             #if UNITY_IOS && !UNITY_EDITOR
                 InitializeNativePlugin();
 
@@ -59,7 +73,7 @@ namespace Onigokko.BLE
                     StartScanning();
                 }
             #else
-                Debug.LogWarning("[BLE] iOS BLE Beacon はiOSビルドでのみ動作します");
+                Debug.LogWarning($"[BLE] iOS BLE Beacon はiOSビルドでのみ動作します - PlayerID: {playerId}");
             #endif
         }
 
@@ -306,10 +320,29 @@ namespace Onigokko.BLE
         {
             if (!isScanning) return;
 
-            int mockPlayerId = UnityEngine.Random.Range(2001, 2005);
+            // 自分のPlayer IDを取得
+            var playerIdManager = Onigokko.Heartbeat.PlayerIdManager.Instance;
+            int myPlayerId = playerIdManager != null ? playerIdManager.GetPlayerId() : playerId;
+
+            // キラーかサバイバーかを判定
+            bool isKiller = (myPlayerId == 1000);
+
+            int mockPlayerId;
+            if (isKiller)
+            {
+                // キラーの場合：サバイバーを検出（1001-1006の6人）
+                mockPlayerId = UnityEngine.Random.Range(1001, 1007);
+            }
+            else
+            {
+                // サバイバーの場合：キラーを検出
+                mockPlayerId = 1000;
+            }
+
             float mockDistance = UnityEngine.Random.Range(0.5f, 30f);
             float mockRssi = -40f - (mockDistance * 2f); // 距離に応じたRSSI
 
+            Debug.Log($"[BLE] モック生成 - 自分:{myPlayerId} → 検出:{mockPlayerId}");
             QueueBeaconUpdate(gameUUID, sessionId, mockPlayerId, mockDistance, mockRssi);
         }
 
