@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
@@ -52,6 +53,7 @@ namespace Onigokko.Map
         // UI関連
         private GUIStyle markerLabelStyle;
         private Coroutine updateMapTilesCoroutine;
+        private static Texture2D circleTexture;
 
         [System.Serializable]
         public class TestPlayer
@@ -156,7 +158,8 @@ namespace Onigokko.Map
         /// </summary>
         private void InitializeFirebase()
         {
-            roomId = PlayerPrefs.GetString("RoomID", "");
+            // roomId = PlayerPrefs.GetString("RoomID", "");
+            roomId = "-O_4Y9-Vdd-kBIIJkfQY";
             userId = PlayerPrefs.GetString("PlayerID", "");
             
             if (string.IsNullOrEmpty(roomId) || string.IsNullOrEmpty(userId))
@@ -167,6 +170,10 @@ namespace Onigokko.Map
             
             databaseRef = FirebaseDatabase.DefaultInstance.RootReference;
             Debug.Log($"[Map] Firebase初期化完了 - RoomID: {roomId}, UserID: {userId}");
+
+            // 他のユーザーの位置情報受信を開始
+            var usersRef = databaseRef.Child("rooms").Child(roomId).Child("users");
+            usersRef.ValueChanged += HandleUsersLocationChange;
         }
 
         /// <summary>
@@ -223,12 +230,65 @@ namespace Onigokko.Map
                 var userLocationRef = databaseRef.Child("rooms").Child(roomId).Child("users").Child(userId);
                 await userLocationRef.Child("lat").SetValueAsync(position.latitude);
                 await userLocationRef.Child("lng").SetValueAsync(position.longitude);
-                Debug.Log($"[Map] 位置情報送信完了 - Lat: {position.latitude:F6}, Lng: {position.longitude:F6}");
+                // Debug.Log($"[Map] 位置情報送信完了 - Lat: {position.latitude:F6}, Lng: {position.longitude:F6}");
             }
             catch (System.Exception e)
             {
                 Debug.LogError($"[Map] Firebase位置情報送信エラー: {e.Message}");
             }
+        }
+
+        /// <summary>
+        /// Firebase上のユーザー位置情報が変更されたときのハンドラ
+        /// </summary>
+        private void HandleUsersLocationChange(object sender, ValueChangedEventArgs args)
+        {
+            if (args.DatabaseError != null)
+            {
+                Debug.LogError($"[Map] Firebase DB Error: {args.DatabaseError.Message}");
+                return;
+            }
+
+            if (args.Snapshot == null || !args.Snapshot.Exists) return;
+
+            var newRemoteMarkers = new List<MapMarker>();
+
+            // スナップショットから全ユーザーの位置を読み取る
+            foreach (var childSnapshot in args.Snapshot.Children)
+            {
+                var otherUserId = childSnapshot.Key;
+                if (otherUserId == this.userId) continue;
+
+                try
+                {
+                    var lat = double.Parse(childSnapshot.Child("lat").Value.ToString());
+                    var lng = double.Parse(childSnapshot.Child("lng").Value.ToString());
+
+                    newRemoteMarkers.Add(new MapMarker
+                    {
+                        label = otherUserId.Substring(0, 5), // ラベルが長過ぎないようにUserIDの先頭5文字を使用
+                        position = new GPSLocationService.Vector2d(lat, lng),
+                        color = Color.yellow, // 他のプレイヤーは黄色で表示
+                        type = MapMarker.MarkerType.Player
+                    });
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogWarning($"[Map] ユーザー({otherUserId})の位置情報の解析に失敗: {e.Message}");
+                }
+            }
+
+            // 古いリモートプレイヤーのマーカーを一旦すべて削除
+            mapMarkers.RemoveAll(marker =>
+                marker.type == MapMarker.MarkerType.Player &&
+                marker.label != "現在位置" &&
+                !testPlayers.Any(p => p.playerName == marker.label)
+            );
+
+            // 新しいリモートプレイヤーのマーカーを追加
+            mapMarkers.AddRange(newRemoteMarkers);
+            
+            Debug.Log($"[Map] 他のプレイヤーの位置を更新: {newRemoteMarkers.Count}人");
         }
 
         /// <summary>
@@ -240,7 +300,7 @@ namespace Onigokko.Map
             foreach (var player in testPlayers)
             {
                 double distance = GPSLocationService.CalculateDistance(currentPos, player.Position);
-                Debug.Log($"[Map] {player.playerName}との距離: {distance:F1}m");
+                // Debug.Log($"[Map] {player.playerName}との距離: {distance:F1}m");
             }
         }
 
@@ -338,7 +398,7 @@ namespace Onigokko.Map
                     }
                 }
             }
-            Debug.Log("[Map] OpenStreetMapタイルの更新完了。");
+            // Debug.Log("[Map] OpenStreetMapタイルの更新完了。");
         }
 
         public Vector2 WorldToScreenPosition(GPSLocationService.Vector2d worldPos, Rect mapRect)
@@ -417,6 +477,33 @@ namespace Onigokko.Map
             GUI.Label(new Rect(10, y, 400, 25), $"エリア半径: {gameAreaRadius}m");
         }
 
+        /// <summary>
+        /// 円形のテクスチャを生成（キャッシュ付き）
+        /// </summary>
+        private static Texture2D GetCircleTexture()
+        {
+            if (circleTexture == null)
+            {
+                int size = 64;
+                var tex = new Texture2D(size, size, TextureFormat.ARGB32, false);
+                float r = size / 2f;
+                for (int y = 0; y < size; y++)
+                {
+                    for (int x = 0; x < size; x++)
+                    {
+                        float dist = Vector2.Distance(new Vector2(x, y), new Vector2(r, r));
+                        if (dist < r - 1) // 少し内側を塗りつぶす
+                            tex.SetPixel(x, y, Color.white);
+                        else
+                            tex.SetPixel(x, y, Color.clear);
+                    }
+                }
+                tex.Apply();
+                circleTexture = tex;
+            }
+            return circleTexture;
+        }
+
         private void DrawMapOverlay()
         {
             if (mapDisplay == null || mapDisplay.texture == null) return;
@@ -424,8 +511,6 @@ namespace Onigokko.Map
             // RawImageの実際のスクリーン座標を取得
             Vector3[] corners = new Vector3[4];
             mapDisplay.rectTransform.GetWorldCorners(corners);
-            // corners[0] = bottom-left, [1] = top-left, [2] = top-right, [3] = bottom-right
-            // OnGUIの座標系に変換 (Y軸が逆)
             Rect mapRect = new Rect(
                 corners[1].x,
                 Screen.height - corners[1].y,
@@ -442,6 +527,8 @@ namespace Onigokko.Map
                 };
             }
 
+            Texture2D markerTex = GetCircleTexture();
+
             foreach (var marker in mapMarkers)
             {
                 Vector2 screenPos = WorldToScreenPosition(marker.position, mapRect);
@@ -450,17 +537,17 @@ namespace Onigokko.Map
 
                 bool isCurrentUser = (marker.label == "現在位置");
                 
-                // --- 現在位置マーカーに脈動効果を追加 ---
-                float pulse = isCurrentUser ? (Mathf.Sin(Time.time * 5f) + 1f) * 2f : 0f; // 0pxから4pxへ脈動
-                float size = (isCurrentUser ? 16f : 12f) + pulse; // ベースサイズに脈動を加える
+                float pulse = isCurrentUser ? (Mathf.Sin(Time.time * 5f) + 1f) * 3f : 0f; // 0pxから6pxへ脈動
+                float size = (isCurrentUser ? 22f : 16f) + pulse;
                 
                 Rect borderRect = new Rect(screenPos.x - size / 2, screenPos.y - size / 2, size, size);
                 GUI.color = isCurrentUser ? Color.white : Color.black;
-                GUI.DrawTexture(borderRect, Texture2D.whiteTexture);
+                GUI.DrawTexture(borderRect, markerTex);
 
-                Rect markerRect = new Rect(borderRect.x + 2, borderRect.y + 2, borderRect.width - 4, borderRect.height - 4);
+                float innerSize = size - 4;
+                Rect markerRect = new Rect(screenPos.x - innerSize / 2, screenPos.y - innerSize / 2, innerSize, innerSize);
                 GUI.color = marker.color;
-                GUI.DrawTexture(markerRect, Texture2D.whiteTexture);
+                GUI.DrawTexture(markerRect, markerTex);
                 
                 GUIContent labelContent = new GUIContent(marker.label);
                 Vector2 labelSize = markerLabelStyle.CalcSize(labelContent);
@@ -504,6 +591,13 @@ namespace Onigokko.Map
             {
                 gpsService.OnLocationUpdated -= OnLocationUpdated;
                 gpsService.OnLocationError -= OnLocationError;
+            }
+
+            // Firebaseリスナーをクリーンアップ
+            if (databaseRef != null && !string.IsNullOrEmpty(roomId))
+            {
+                var usersRef = databaseRef.Child("rooms").Child(roomId).Child("users");
+                usersRef.ValueChanged -= HandleUsersLocationChange;
             }
         }
     }
