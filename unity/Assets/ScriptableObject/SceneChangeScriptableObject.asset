@@ -29,8 +29,8 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 6e4d822ad4fa34ca88125c181ad26c99, type: 3}
   - sceneName: Waiting
     sceneAsset: {fileID: 102900000, guid: f218d94608ca94cd3952b0dee373ce46, type: 3}
-  - sceneName: PresenterScene
-    sceneAsset: {fileID: 102900000, guid: 410b11a5b7988430fb3fe3f48d4815f0, type: 3}
+  - sceneName: MainScene
+    sceneAsset: {fileID: 102900000, guid: 480d400516e5f432a99385304e50b1fe, type: 3}
   - sceneName: Winner
     sceneAsset: {fileID: 102900000, guid: 977520fd8fa814bb0b1554fded576a98, type: 3}
   - sceneName: Noroware

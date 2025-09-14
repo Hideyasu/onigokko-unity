@@ -2,8 +2,7 @@
   "project_info": {
     "project_number": "842783323477",
     "project_id": "fujii-photo-calendar",
-    "storage_bucket": "fujii-photo-calendar.firebasestorage.app",
-    "firebase_url": "https://onigokko-unity-default-rtdb.firebaseio.com/"
+    "storage_bucket": "fujii-photo-calendar.firebasestorage.app"
   },
   "client": [
     {
