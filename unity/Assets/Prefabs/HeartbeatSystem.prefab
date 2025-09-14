@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8934567890123456789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8934567890123456790}
+  - component: {fileID: 8934567890123456791}
+  - component: {fileID: 8934567890123456792}
+  m_Layer: 0
+  m_Name: HeartbeatSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8934567890123456790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934567890123456789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8934567890123456791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934567890123456789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738e35c6c1ded451facaa1e0998a4550, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  heartbeatSystem: {fileID: 0}
+  proximityDetector: {fileID: 0}
+  uiController: {fileID: 0}
+  audioManager: {fileID: 0}
+  heartbeatCanvas: {fileID: 0}
+  vignetteOverlay: {fileID: 0}
+  pulseOverlay: {fileID: 0}
+  dangerOverlay: {fileID: 0}
+  playerId: 1001
+  autoInitialize: 1
+--- !u!114 &8934567890123456792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934567890123456789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45789d61d342a4bc8b4f7e0da617202b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  setupInstructions: "\U0001F3AE \u5FC3\u97F3\u30B7\u30B9\u30C6\u30E0\u8A2D\u5B9A\u30AC\u30A4\u30C9\n\n## 1. \u57FA\u672C\u8A2D\u5B9A\n### Player ID\u8A2D\u5B9A:\n\u2022 \u30AD\u30E9\u30FC: 1000\n\u2022 \u30B5\u30D0\u30A4\u30D0\u30FC: 1001, 1002, 1003...\n\n### Inspector\u8A2D\u5B9A:\n\u2022 Auto Initialize: \u2611\uFE0F (\u63A8\u5968)\n\u2022 Player ID: \u30D7\u30EC\u30A4\u30E4\u30FC\u306B\u5FDC\u3058\u3066\u8A2D\u5B9A\n\n## 2. \u30AA\u30FC\u30C7\u30A3\u30AA\u8A2D\u5B9A\n### \u5FC5\u8981\u306A\u30AA\u30FC\u30C7\u30A3\u30AA\u30D5\u30A1\u30A4\u30EB:\n\u2022 heartbeat_slow.wav (\u9060\u8DDD\u96E2\u7528)\n\u2022 heartbeat_medium.wav (\u4E2D\u8DDD\u96E2\u7528)\n\u2022 heartbeat_fast.wav (\u8FD1\u8DDD\u96E2\u7528)\n\u2022 heartbeat_critical.wav (\u6975\u8FD1\u8DDD\u96E2\u7528)\n\u2022 ambient_tension.wav (\u74B0\u5883\u97F3)\n\u2022 alert_sound.wav (\u8B66\u544A\u97F3)\n\n### \u914D\u7F6E\u5834\u6240:\nAssets/Resources/Sounds/Heartbeat/\n\n## 3. UI\u8A2D\u5B9A\n### \u5FC5\u8981\u306AUI\u8981\u7D20:\n\u2022 Canvas (\u81EA\u52D5\u4F5C\u6210)\n\u2022 \u30D3\u30CD\u30C3\u30C8\u30AA\u30FC\u30D0\u30FC\u30EC\u30A4 (\u81EA\u52D5\u4F5C\u6210)\n\u2022 \u30D1\u30EB\u30B9\u30A8\u30D5\u30A7\u30AF\u30C8 (\u81EA\u52D5\u4F5C\u6210)\n\u2022 \u5371\u967A\u30AA\u30FC\u30D0\u30FC\u30EC\u30A4 (\u81EA\u52D5\u4F5C\u6210)\n\n## 4. BLE\u8A2D\u5B9A\n### \u5FC5\u8981\u306A\u30B3\u30F3\u30DD\u30FC\u30CD\u30F3\u30C8:\n\u2022 iOSBLEBeacon (\u81EA\u52D5\u8FFD\u52A0)\n\u2022 UUID: 550e8400-e29b-41d4-a716-446655440000\n\n## 5. \u4F7F\u7528\u65B9\u6CD5\n### \u521D\u671F\u5316:\nHeartbeatManager.Instance.Initialize();\n\n### \u30B7\u30B9\u30C6\u30E0\u958B\u59CB:\nHeartbeatManager.Instance.StartHeartbeatSystem();\n\n### Player ID\u5909\u66F4:\nHeartbeatManager.Instance.SetPlayerId(1001);"
+  heartbeatRangeFar: 50
+  heartbeatRangeMid: 30
+  heartbeatRangeNear: 10
+  maxVolume: 1
+  maxVignetteAlpha: 0.6
+  enableVibration: 1
+  enableScreenShake: 1
