@@ -535,6 +535,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartComponent
       objectReference: {fileID: 0}
+    - target: {fileID: 6736410417292917747, guid: 318f9f5d638a14171be5791665207356, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1917661185}
+    - target: {fileID: 6736410417292917747, guid: 318f9f5d638a14171be5791665207356, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick
+      objectReference: {fileID: 0}
     - target: {fileID: 9096091127477175105, guid: 318f9f5d638a14171be5791665207356, type: 3}
       propertyPath: m_Text
       value: 
@@ -549,6 +557,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3966093255457779867, guid: 318f9f5d638a14171be5791665207356, type: 3}
   m_PrefabInstance: {fileID: 1592199899}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1917661185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6613409458759581500, guid: 318f9f5d638a14171be5791665207356, type: 3}
+  m_PrefabInstance: {fileID: 1592199899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa8f70c05f2042d08153796c659da67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2068712884
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +720,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: eb66a0fd7e66c41d1a530a5eb70e7c6b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1.5

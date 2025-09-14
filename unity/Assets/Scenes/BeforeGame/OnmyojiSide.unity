@@ -239,6 +239,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SampleSkill (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8232083360186162960, guid: bd6409160f93249c1abe2355fc971bac, type: 3}
+      propertyPath: _sceneIndex
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -784,6 +788,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SampleSkill (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8232083360186162960, guid: bd6409160f93249c1abe2355fc971bac, type: 3}
+      propertyPath: _sceneIndex
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -914,6 +922,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SampleSkill (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8232083360186162960, guid: bd6409160f93249c1abe2355fc971bac, type: 3}
+      propertyPath: _sceneIndex
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1026,7 +1038,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3933277248572992633, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
       propertyPath: _sceneIndex
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 392823556944947767, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
       propertyPath: m_Name
@@ -1305,6 +1317,10 @@ PrefabInstance:
     - target: {fileID: 6384985507988121748, guid: 66a2b4835181c4f6fb06ba5a8a103278, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344899419314905732, guid: 66a2b4835181c4f6fb06ba5a8a103278, type: 3}
+      propertyPath: _sceneIndex
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8313690624929907980, guid: 66a2b4835181c4f6fb06ba5a8a103278, type: 3}
       propertyPath: m_Color.a

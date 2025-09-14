@@ -575,7 +575,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3933277248572992633, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
       propertyPath: _sceneIndex
-      value: -1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 392823556944947767, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
       propertyPath: m_Name

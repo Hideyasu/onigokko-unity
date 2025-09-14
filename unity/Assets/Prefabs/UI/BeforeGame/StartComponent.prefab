@@ -132,34 +132,12 @@ PrefabInstance:
     - target: {fileID: 5751435815372773192, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7511982279193688051}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 392823556944947767, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7511982279193688051}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
---- !u!1 &1719859395680470668 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 392823556944947767, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
-  m_PrefabInstance: {fileID: 1345940717381151931}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7511982279193688051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719859395680470668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffa8f70c05f2042d08153796c659da67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sceneChangeScriptableObject: {fileID: 11400000, guid: 3e53ee72eb3df4feab6439a4b2f0f802, type: 2}
-  _sceneIndex: -1
 --- !u!224 &2547432402863882093 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3600612189116404694, guid: b7aae724acff34a9a97889ac99e04202, type: 3}

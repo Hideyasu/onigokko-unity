@@ -8,28 +8,28 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Verification/BLEBeaconTest.unity
     guid: 79500acd1758c4cddbcc71aa8745ec6a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BeforeGame/Start.unity
     guid: d5b8db391cf2f4840ba440c1085690dc
   - enabled: 1
     path: Assets/Scenes/BeforeGame/OnmyojiSide.unity
     guid: 322422c6b349041fa984958b01df4571
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BeforeGame/Inviting.unity
     guid: 29904b7f610424b4ea39249f6838f94c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BeforeGame/Rogin.unity
     guid: 58f7b03e81f974c439f2dd8f76a91194
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BeforeGame/SelectGameType.unity
     guid: 59b926771c7d1406382828569b8fcc00
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BeforeGame/SkillSetting.unity
     guid: 6e4d822ad4fa34ca88125c181ad26c99
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BeforeGame/Waiting.unity
     guid: f218d94608ca94cd3952b0dee373ce46
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Verification/MapVerification.unity
     guid: ab27d6ce2f35240eb80e086532c812e9
   - enabled: 1
