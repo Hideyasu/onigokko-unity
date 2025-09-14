@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "842783323477",
+    "project_id": "fujii-photo-calendar",
+    "storage_bucket": "fujii-photo-calendar.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842783323477:android:a21fc117d02784de57abdc",
+        "android_client_info": {
+          "package_name": "com.example.fujii_photo_calendar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLIjzWF5zFQ0XjgJzlHepPz-m6u2jEqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

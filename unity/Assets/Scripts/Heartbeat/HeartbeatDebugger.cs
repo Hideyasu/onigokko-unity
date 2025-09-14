@@ -153,7 +153,7 @@ namespace Onigokko.Heartbeat
             buttonText.text = "心音テスト";
             buttonText.color = Color.white;
             buttonText.alignment = TextAnchor.MiddleCenter;
-            buttonText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            buttonText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             buttonText.fontSize = 24;
 
             // ボタンクリックイベント
@@ -173,7 +173,7 @@ namespace Onigokko.Heartbeat
 
             debugText = textObj.AddComponent<Text>();
             debugText.color = Color.white;
-            debugText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            debugText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             debugText.fontSize = 18;
             debugText.alignment = TextAnchor.UpperLeft;
         }
