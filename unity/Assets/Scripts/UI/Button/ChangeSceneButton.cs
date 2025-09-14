@@ -14,6 +14,7 @@ namespace UICreate
 
         public void OnClick()
         {
+            SoundManager.Instance.PlaySE();
             LoadScene(_sceneIndex);
         }
 
