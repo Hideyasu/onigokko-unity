@@ -1,29 +1,26 @@
 {
   "project_info": {
-    "project_number": "974453648685",
-    "firebase_url": "https://onigokko-unity-default-rtdb.firebaseio.com/",
-    "project_id": "onigokko-unity",
-    "storage_bucket": "onigokko-unity.firebasestorage.app"
+    "project_number": "842783323477",
+    "project_id": "fujii-photo-calendar",
+    "storage_bucket": "fujii-photo-calendar.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:974453648685:ios:4fcbc8d6cfe487274bf7a4",
+        "mobilesdk_app_id": "1:842783323477:android:a21fc117d02784de57abdc",
         "android_client_info": {
-          "package_name": "com.yourcompany.onigokko.test"
+          "package_name": "com.example.fujii_photo_calendar"
         }
       },
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAwIfbc59P_7DWeGIgP9ZIRccPysUWcHqk"
+          "current_key": "AIzaSyBqLIjzWF5zFQ0XjgJzlHepPz-m6u2jEqI"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 0
-        },
         "appinvite_service": {
-          "status": 1
+          "other_platform_oauth_client": []
         }
       }
     }

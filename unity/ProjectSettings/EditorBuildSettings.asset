@@ -11,8 +11,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/BeforeGame/Start.unity
     guid: d5b8db391cf2f4840ba440c1085690dc
-  - enabled: 0
-    path: Assets/Scenes/BeforeGame/DecidePlayerSide.unity
+  - enabled: 1
+    path: Assets/Scenes/BeforeGame/OnmyojiSide.unity
     guid: 322422c6b349041fa984958b01df4571
   - enabled: 0
     path: Assets/Scenes/BeforeGame/Inviting.unity

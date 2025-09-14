@@ -142,7 +142,7 @@ PrefabInstance:
     - target: {fileID: 3223815715773473952, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 42d073578ac0e4716ba674f8996666bc, type: 3}
+      objectReference: {fileID: 21300000, guid: a5e0846abef704bf6a107db61093f2b1, type: 3}
     - target: {fileID: 3600612189116404694, guid: b7aae724acff34a9a97889ac99e04202, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -307,7 +307,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6C7A\u5B9A"
+  m_Text: 
 --- !u!222 &150113086
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -791,7 +791,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 261, y: -30}
-  m_SizeDelta: {x: 200, y: 100}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1977000933
 MonoBehaviour:
@@ -875,15 +875,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5188679, g: 0, b: 0, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b2dbf947ad20843c5b3c3b4665030b75, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1011,6 +1011,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1519078171}
     m_Modifications:
     - target: {fileID: 8713490622001360, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
+      propertyPath: 
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713490622001360, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
       objectReference: {fileID: 0}
@@ -1087,7 +1091,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8713490622001360, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
-    - target: {fileID: 8713490622001360, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
@@ -1097,19 +1100,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1877736499011928923, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
       propertyPath: m_Color.a
-      value: 0.8784314
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1877736499011928923, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
       propertyPath: m_Color.b
-      value: 0.18970275
+      value: 0.047169805
       objectReference: {fileID: 0}
     - target: {fileID: 1877736499011928923, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
       propertyPath: m_Color.g
-      value: 0.18970275
+      value: 0.047169805
       objectReference: {fileID: 0}
     - target: {fileID: 1877736499011928923, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
       propertyPath: m_Color.r
-      value: 0.2735849
+      value: 0.047169805
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824466931480566776, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
+      propertyPath: m_Text
+      value: "\u540D\u524D\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824466931480566776, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824466931480566776, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824466931480566776, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3392116908715256955, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
       propertyPath: m_Name
@@ -1121,15 +1140,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4170446999540015068, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.05206478
       objectReference: {fileID: 0}
     - target: {fileID: 4170446999540015068, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.05206478
       objectReference: {fileID: 0}
     - target: {fileID: 4170446999540015068, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.735849
       objectReference: {fileID: 0}
     - target: {fileID: 4170446999540015068, guid: 3ade8c3b98bb144f29a77b8acbd3ad4c, type: 3}
       propertyPath: m_FontData.m_FontSize

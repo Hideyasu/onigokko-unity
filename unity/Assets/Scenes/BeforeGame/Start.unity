@@ -436,8 +436,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 696436400}
     m_Modifications:
     - target: {fileID: 2547432402863882093, guid: 318f9f5d638a14171be5791665207356, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547432402863882093, guid: 318f9f5d638a14171be5791665207356, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1700
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547432402863882093, guid: 318f9f5d638a14171be5791665207356, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -320
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3966093255457779867, guid: 318f9f5d638a14171be5791665207356, type: 3}
       propertyPath: m_Pivot.x
@@ -505,7 +513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3966093255457779867, guid: 318f9f5d638a14171be5791665207356, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -137
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3966093255457779867, guid: 318f9f5d638a14171be5791665207356, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -519,12 +527,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4472345612398037019, guid: 318f9f5d638a14171be5791665207356, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5671365075387066129, guid: 318f9f5d638a14171be5791665207356, type: 3}
       propertyPath: m_Name
       value: StartComponent
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6613409458759581500, guid: 318f9f5d638a14171be5791665207356, type: 3}
+    - target: {fileID: 9096091127477175105, guid: 318f9f5d638a14171be5791665207356, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
